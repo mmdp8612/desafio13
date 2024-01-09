@@ -1,9 +1,35 @@
-## Información sobre el Desafio 12
+## Información sobre el Desafio 13
+
+Se agrego la posibilidad de subir foto de perfil y documentos, para ello se modifico el modelo de Users, se agregaron 4 rutas nuevas las cuales permiten administrar dicho contenido:
+
+- **POST**        http://localhost:8080/api/users/:uid/profile
+
+Esta ruta permite subir la foto de perfil del usuario.
+
+- **POST**        http://localhost:8080/api/users/:uid/documents
+
+Esta ruta permite subir documentos al usuario que inicio sesion, los mismos deben ser en formato PDF.
+
+- **POST**        http://localhost:8080/api/users/premium/:uid
+
+Esta ruta permite convertir un usuario a PREMIUM, siempre y cuando el mismo tenga cargado los documentos correspondientes, para que funcione los documentos que se suban deben tener los mismos nombres que se menciona en la consigna del desafio para que se puedan identificar: "Identificacion.pdf", "Comprobante de domicilio.pdf" y "Comprobante de estado de cuenta.pdf", yo decidi que los mismos sean pdf.
+
+- **DELETE**      http://localhost:8080/api/users/:uid/documents/:filename
+
+Esta ruta permite eliminar algun documento en caso de que haya algun error en una carga.
+
+Para la administracion ademas agregue una vista desde donde se puede cargar la foto de perfil como tambien los documentos, la misma es:
+
+- **GET**      http://localhost:8080/view/profile
+
+Para que funcione esta ultima ruta es necesario estar logueado. Las pruebas tambien pueden hacerse con algun cliente REST, pero a los fines de facilitar las pruebas realice la vista **view/profile**.
+
+Ademas se agrego la funcionalidad para que se actualice el campo **last_connection** al modelo Users para almacenar la hora que se conecta el usuario.
+
+## Temas de clases pasadas
 
 Se agrego la posibilidad de realizar testing unitario, para ello se agregaron las librerias "chai", "mocha" y "supertest".
 Se agrego el archivo **test/supertest.test.js** en el raiz del producto. Ademas se agrego en el package.json el comando "test" el cual permite correr el test: **npm run test**
-
-## Temas de clases pasadas
 
 Se agrego la documentacion de las rutas de Productos y Carrito para ello se utilizaron las librerias **swagger-jsdoc** y **swagger-ui-express**, para acceder a la documentacion se debe utilizar la ruta: **http://localhost:8080/api-docs**.
 
