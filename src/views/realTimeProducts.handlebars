@@ -1,0 +1,62 @@
+<h1 class="text-center">RealTime Products</h1>
+<div class="container">
+    <form action="/view/realtimeproducts" id="formProduct" class="form-product">
+        <div class="form-input">
+            <input type="text" name="code" placeholder="Codigo" style="width:70px;" required>
+        </div>
+        <div class="form-input">
+            <input type="text" name="title" placeholder="Nombre" required>
+        </div>
+        <div class="form-input">
+            <input type="number" name="price" placeholder="Precio" style="width:90px;" required>
+        </div>
+        <div class="form-input">
+            <input type="text" name="description" placeholder="Descripcion" required>
+        </div>
+        <div class="form-input">
+            <select name="category" required>
+                <option value="">Categoria</option>
+                <option value="Audio">Audio</option>
+                <option value="Informatica">Informatica</option>
+                <option value="Electronica">Electronica</option>
+                <option value="Hogar">Hogar</option>
+                <option value="Indumentaria">Indumentaria</option>
+                <option value="Ferreteria">Ferreteria</option>
+            </select>
+        </div>
+        <div class="form-input">
+            <select name="status" placeholder="Estado" required>
+                <option value="0">Inactivo</option>
+                <option value="1" selected>Activo</option>
+            </select>
+        </div>
+        <div class="form-input">
+            <input type="number" name="stock" placeholder="Stock" style="width:50px;" required>
+        </div>
+        <div class="form-input">
+            <button type="submit" class="btn">
+                Agregar Producto
+            </button>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <table id="tblProducts">
+        <thead>
+            <tr>
+                <th class="text-center">Imagen</th>
+                <th class="text-center">Codigo</th>
+                <th class="text-left">Producto</th>
+                <th class="text-center">Precio</th>
+                <th class="text-center">Stock</th>
+                <th class="text-center">Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--List products-->
+        </tbody>
+    </table>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/socket.js"></script>
+<script src="/js/realTimeProducts.js"></script>

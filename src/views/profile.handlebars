@@ -1,0 +1,41 @@
+<h1 class="text-center">Perfil de Usuario</h1>
+<hr>
+<div class="container profile-container">
+    <div class="text-center">
+        <h3>Foto de perfil</h3>    
+        <label for="fileInput" class="file-upload-btn">Seleccione archivo</label>
+        <input type="file" id="fileInput" accept="image/*">
+        <div id="imagePreview">
+            {{#if image}}
+                <img src="/uploads/profiles/{{ image }}" alt="Avatar" width="150" id="imageProfile">
+            {{/if}}
+        </div>
+    </div>
+    <div class="text-center">
+        <h3>Documentos</h3>
+        <label for="pdfFiles" class="file-upload-btn">Seleccione documento</label>
+        <input type="file" id="pdfFiles" accept=".pdf" multiple>
+        {{#if documents}}
+            <ul class="list-file">
+                {{#each documents}}
+                    <li>{{this.name}} <a href="javascript:void(0);" onclick="deleteDocument('{{this.reference}}')"><i class="fas fa-trash"></i></a></li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </div>
+    <div>
+        <h3>Datos del usuario</h3>
+        <p>Nombre: <b>{{first_name}}</b></p> 
+        <p>Apellido: <b>{{last_name}}</b></p>
+        <p>Edad: <b>{{age}}</b></p>
+        <p>Email: <b>{{email}}</b></p>
+        <p>Rol: <b>{{role}}</b></p>
+    </div>
+    <br><br><br>
+</div>
+<div class="text-center">
+    <a href="/view/logout" class="btn">Cerrar sesion</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/profile.js"></script>

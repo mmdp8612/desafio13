@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="text-center d-flex justify-content-between align-items-center">
+        <span>Catalogo de Productos</span>
+        {{#if session.user}}
+            <span class="username"><b class="text-uppercase">{{session.user.first_name}}</b> ({{session.user.email}})</span>
+        {{/if}}
+    </h1>
+</div>
+<div class="container products" id="listProducts">
+    {{#each products}}
+        <div class="product">
+            <div class="product-image">
+                <a href="/view/products/{{_id}}">
+                    <img src="{{thumbnail}}" alt="{{title}}">
+                </a>
+            </div>
+            <div class="product-detail">
+                <h3 class="product-title">{{title}}</h3>
+                <p class="product-price">$ {{price}}</p>
+                <a href="javascript:void(0);" class="btn btnAddProduct" data-id="{{_id}}">Agregar al carrito</a>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<div class="container">
+    <div class="pagination">
+        <div class="pagination-info">
+            <p>Total Paginas: <b>{{paginate.totalPages}}</b><p>
+        </div>
+        <div class="pagination-link">
+            {{#if paginate.hasPrevPage}}
+                <a href="/view/products?page={{paginate.prevPage}}" class="btn page-link">Pagina Anterior</a>
+            {{/if}}
+            {{#if paginate.hasNextPage}}
+                <a href="/view/products?page={{paginate.nextPage}}" class="btn page-link">Pagina Siguiente</a>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/products.js"></script>

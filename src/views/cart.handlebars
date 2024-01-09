@@ -1,0 +1,36 @@
+<input type="hidden" id="cid" value="{{cid}}">
+
+<h1 class="text-center">Carrito de compras</h1>
+
+<div class="container">
+    {{#if cartProducts}}
+        <table>
+            <thead>
+                <tr>
+                    <th class="text-center">Imagen</th>
+                    <th>Producto</th>
+                    <th class="text-center">Precio</th>
+                    <th class="text-center">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each cartProducts}}
+                    <tr>
+                        <td class="text-center"><img src="{{product.thumbnail}}" alt="{{product.title}}" width="120"></td>
+                        <td>{{product.title}}</td>
+                        <td class="text-center">$ {{product.price}}</td>
+                        <td class="text-center">{{quantity}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <p class="text-center">
+            <button class="btn btnFinalizePurchase">Finalizar compra</button>
+        </p>
+    {{else}}
+        <p class="text-center">El ID indicado no existe o no posee productos asignados.</p>
+    {{/if}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/cart.js"></script>

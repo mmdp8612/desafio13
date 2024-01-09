@@ -1,0 +1,274 @@
+paths:
+  /api/products/:
+    get:
+      summary: Obtiene todos los productos del ecommerce
+      tags:
+        - Products
+      parameters:
+        - name: limit
+          in: query
+          description: Limite de resultados
+          required: false
+          schema:
+            type: number
+        - name: page
+          in: query
+          description: Indica el numero de pagina
+          required: false
+          schema:
+            type: number
+        - name: order
+          in: query
+          description: Determina el orden por precio ASC o DESC
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Permite buscar por el nombre del producto
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Los productos fueron obtenidos OK desde la DB
+          content:
+            application/json:
+              schema:
+                type: array 
+                items:
+                  $ref: '#components/schemas/Products'
+    post:
+      summary: Crea un nuevo producto en el ecommerce
+      security:
+        - bearerAuth: []
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/CreateProduct'
+      responses:
+        "200":
+          description: Producto creado exitosamente
+        "401":
+          description: No autorizado - Token de acceso inválido
+        "500":
+          description: Error interno del servidor
+  /api/products/{uid}:
+    get:
+      summary: Obtiene producto por su uid
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          description: UID del usuario a obtener
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto devuelto OK desde la DB
+          content:
+            application/json:
+              schema:
+                type: array 
+                items:
+                  $ref: '#components/schemas/Products'
+    delete:
+      summary: Elimina un producto por su uid
+      security:
+        - bearerAuth: []
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          description: UID del usuario a eliminar
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto eliminado de la DB
+    put:
+      summary: Actualiza un producto por su uid
+      security:
+        - bearerAuth: []
+      tags:
+        - Products
+      parameters:
+        - name: uid
+          in: path
+          description: UID del usuario a eliminar
+          required: true
+          schema:
+            type: string
+        - name: body
+          in: body
+          description: Datos del producto a actualizar
+          required: true
+          schema:
+            type: object
+            properties:
+              owner:
+                type: string
+                description: Usuario quien crea el Producto
+              title:
+                type: string
+                description: Nombre del Producto
+              description:
+                type: string
+                description: Descripcion del Producto
+              price:
+                type: number
+                description: Precio del Producto
+              thumbnail:
+                type: string
+                description: Imagen miniatura del Producto
+              code:
+                type: string
+                description: Codigo unico del Producto
+              stock:
+                type: integer
+                description: Existencias del Producto
+              category:
+                type: integer
+                description: Categoria del Producto
+              status:
+                type: boolean
+                description: Estado del Producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/UpdateProduct'
+      responses:
+        "200":
+          description: Producto actualizado
+
+components:
+  schemas:
+    Products:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: UID Autogenerado por Mongo
+        owner:
+          type: string
+          description: Usuario quien crea el Producto
+        title:
+          type: string
+          description: Nombre del Producto
+        description:
+          type: string
+          description: Descripcion del Producto
+        price:
+          type: number
+          description: Precio del Producto
+        thumbnail:
+          type: string
+          description: Imagen miniatura del Producto
+        code:
+          type: string
+          description: Codigo unico del Producto
+        stock:
+          type: integer
+          description: Existencias del Producto
+        category:
+          type: integer
+          description: Categoria del Producto
+        status:
+          type: boolean
+          description: Estado del Producto
+      
+  requestBodies:
+      CreateProduct:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: UID Autogenerado por Mongo
+          owner:
+            type: string
+            description: Usuario quien crea el Producto
+          title:
+            type: string
+            description: Nombre del Producto
+          description:
+            type: string
+            description: Descripcion del Producto
+          price:
+            type: number
+            description: Precio del Producto
+          thumbnail:
+            type: string
+            description: Imagen miniatura del Producto
+          code:
+            type: string
+            description: Codigo unico del Producto
+          stock:
+            type: integer
+            description: Existencias del Producto
+          category:
+            type: integer
+            description: Categoria del Producto
+          status:
+            type: boolean
+            description: Estado del Producto
+        example:
+          owner: admin
+          title: PC Completa
+          description: Computadora de escritorio
+          price: 15000.00
+          code: XYZ876
+          stock: 10
+          category: 1
+          status: true
+      UpdateProduct:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: UID Autogenerado por Mongo
+          owner:
+            type: string
+            description: Usuario quien crea el Producto
+          title:
+            type: string
+            description: Nombre del Producto
+          description:
+            type: string
+            description: Descripcion del Producto
+          price:
+            type: number
+            description: Precio del Producto
+          thumbnail:
+            type: string
+            description: Imagen miniatura del Producto
+          code:
+            type: string
+            description: Codigo unico del Producto
+          stock:
+            type: integer
+            description: Existencias del Producto
+          category:
+            type: integer
+            description: Categoria del Producto
+          status:
+            type: boolean
+            description: Estado del Producto
+        example:
+          owner: admin
+          title: PC Completa
+          description: Computadora de escritorio
+          price: 15000.00
+          code: XYZ876
+          stock: 10
+          category: 1
+          status: true

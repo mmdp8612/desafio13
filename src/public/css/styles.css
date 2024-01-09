@@ -1,0 +1,310 @@
+*{
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    margin:0;
+    padding:0;
+}
+
+.container {
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.form-product {
+    padding:20px 0;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-input input,
+.form-input select {
+    border:1px solid #ccc;
+    border-radius:10px;
+    padding:10px 15px;
+    outline: none;
+}
+
+.btn {
+    border:0px;
+    padding:10px 15px;
+    border-radius:10px;
+    background-color:brown;
+    color:#fff;
+    cursor:pointer;
+    text-decoration: none;
+}
+
+.text-center{
+    text-align:center;
+}
+
+.text-left {
+    text-align:left;
+}
+
+table {
+    width:100%;
+    border-collapse: collapse;
+}
+
+table thead tr th,
+table tbody tr td {
+    border-collapse: collapse;
+    border:1px solid #000;
+    padding:5px 10px;
+}
+
+table thead tr th{
+    background-color:#444;
+    color:#fff;
+}
+
+.chat {
+    height:85vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.list-messages {
+    height:100%;
+    border:1px solid #ccc;
+    background-color:#eee;
+    padding:10px;
+    overflow-y: scroll;
+}
+
+.list-messages p {
+    padding:5px 10px;
+    border-radius: 8px;
+    display:inline-block;
+    margin: 5px 0px;
+}
+
+.list-messages p.me {
+    background-color: #00A9EA;
+    color:#fff;
+}
+
+.list-messages p.other {
+    background-color: #aaa;
+    color:#000;
+}
+
+.input-message {
+    overflow: hidden;
+    border:1px solid #444;
+}
+
+.input-message input {
+    padding-left:10px;
+    width:100%;
+    height:40px;
+    border:0;
+    font-size:20px;
+    font-weight:bold;
+    outline: none;
+}
+
+.products {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.product {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 5px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding-bottom:25px;
+}
+
+.product-image img {
+    height:120px;
+}
+
+.pagination {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:15px;
+    margin-top:20px;
+    border:1px solid #ddd;
+    border-radius:8px;
+}
+
+.detail{ 
+    display:flex;
+}
+
+.detail-info {
+    padding:15px 20px;
+}
+
+.detail-info p {
+    margin-bottom:25px;
+}
+
+.detail-info a.btn {
+    display:inline-block;
+    margin-top:10px;
+}
+
+.navbar {
+    background-color:#000;
+}
+
+.navbar ul {
+    margin:0;
+    display:flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.navbar ul li {
+    
+}
+
+.navbar ul li a {
+    display:block;
+    padding:15px 20px;
+    color:#fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    background-color:#fff;
+    color:#000;
+}
+
+.auth-container {
+    max-width:400px;
+    width:100%;
+    margin:0 auto;
+    text-align:center;
+    background-color:#ccc;
+    border-radius:8px;
+    padding:20px 15px;
+}
+
+.form-group {
+    display:flex;
+    flex-direction: column;
+    margin:15px 0;
+}
+
+.form-group label {
+    margin-bottom:10px;
+}
+
+.form-group button {
+    margin-top:15px;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.username {
+    font-size:16px;
+    color:#444;
+}
+
+.d-flex {
+    display:flex;
+} 
+
+.justify-content-between {
+    justify-content: space-between;
+} 
+
+.align-items-center {
+    align-items: center;
+}
+
+.profile-container {
+    display:flex;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.profile-container div {
+    width:33%;
+    padding:0 10px;
+    border:1px solid #ccc;
+    margin:1px;
+}
+
+.profile-container div h3 {
+    background-color:#444;
+    color:#fff;
+    padding:5px 10px;
+    margin:8px 0 15px 0;
+}
+
+#imagePreview {
+    width:100% !important;
+    text-align:center;
+    padding:10px;
+    border:0;
+    margin:10px 0;
+}
+
+#fileInput,
+#pdfFiles {
+    display: none;
+}
+  
+.file-upload-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+}
+  
+.file-upload-btn:hover {
+    background-color: #2980b9;
+}
+
+.list-file {
+    list-style: none;
+    padding:0;
+}
+
+.list-file li {
+    text-align: left;
+    margin:5px 0;
+    background-color:#ccc;
+    padding:5px 10px;
+    border-radius:8px;
+    display:flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 900px){
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px){
+    .products {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
